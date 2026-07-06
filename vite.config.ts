@@ -8,3 +8,5 @@ export default defineConfig({
     },
   }
 });
+
+// forcar deploy limpo
