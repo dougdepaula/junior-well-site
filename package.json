@@ -4,9 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
+    "dev": "tanstack-start dev",
+    "build": "tanstack-start build",
+    "start": "tanstack-start start",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
