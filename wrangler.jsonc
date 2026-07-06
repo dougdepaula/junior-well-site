@@ -2,12 +2,5 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "junior-well-site",
   "compatibility_date": "2026-07-06",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": ".output/server/index.mjs",
-  "assets": {
-    "directory": ".output/public",
-    "binding": "ASSETS"
-  }
+  "pages_build_output_dir": ".output/public"
 }
