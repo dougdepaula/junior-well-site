@@ -9,6 +9,8 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { Toaster } from "sonner";
+import faviconDark from "@/assets/favicon-dark.svg";
+import faviconLight from "@/assets/favicon-light.svg";
 
 import appCss from "../styles.css?url";
 
@@ -83,6 +85,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      // Ícone para modo escuro (Dark Theme)
+      {
+        rel: "icon",
+        href: faviconDark,
+        media: "(prefers-color-scheme: dark)"
+      },
+      // Ícone para modo claro (Light Theme)
+      {
+        rel: "icon",
+        href: faviconLight,
+        media: "(prefers-color-scheme: light)"
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
