@@ -1,5 +1,6 @@
 import { Check, ArrowUpRight } from "lucide-react";
 import { SectionRail } from "./SectionRail";
+import { useNavigate } from "@tanstack/react-router";
 
 const PROGRAMS = [
   {
@@ -38,6 +39,26 @@ const PROGRAMS = [
 ];
 
 export function Plans() {
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("#")) {
+      if (window.location.pathname === '/') {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate({ to: '/' }).then(() => {
+          setTimeout(() => {
+            const element = document.querySelector(href);
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }, 500);
+        });
+      }
+    } else {
+      navigate({ to: href });
+    }
+  };
+
   return (
     <section id="programas" className="relative w-full bg-[#050505] py-32">
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] max-w-[1600px] flex-col justify-between px-6 pb-10 md:px-20 xl:px-28 isolate [contain:layout]">
@@ -96,9 +117,13 @@ export function Plans() {
                 ))}
               </ul>
 
-              <a href="#consultoria" className={`mt-10 ${p.accent ? "btn-jw btn-jw-primary" : "btn-jw btn-jw-ghost"}`}>
+              <button
+                onClick={() => handleNavClick("#consultoria")}
+                // "justify-start" garante o alinhamento à esquerda e "gap-2" mantém o espaçamento
+                className={`mt-10 flex items-center justify-start gap-2 ${p.accent ? "btn-jw btn-jw-primary" : "btn-jw btn-jw-ghost"}`}
+              >
                 Solicitar análise <ArrowUpRight className="h-4 w-4" />
-              </a>
+              </button>
             </article>
           ))}
         </div>

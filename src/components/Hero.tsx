@@ -1,4 +1,3 @@
-import { ArrowUpRight, ArrowDown, Play } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,50 +9,53 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
 
+  // Lógica de navegação centralizada para evitar conflitos e manter a URL limpa
+  const handleNavClick = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      // Uso do scrollIntoView para uma navegação nativa, leve e sem conflito de plugins
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
       tl.to(".hero-bg-container", { opacity: 1, duration: 0.1 }, 0);
 
-      // Atleta: Distância menor (20px), mais tempo (1.4s), curva mais suave (power3)
       tl.fromTo(".hero-image",
         { x: 20, opacity: 0 },
         { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
         0.2
       );
 
-      // Eyebrow
       tl.fromTo(".hero-eyebrow",
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
         0.35
       );
 
-      // Headline: Distância cortada pela metade (30px em vez de 60px)
       tl.fromTo(".hero-word",
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.4, ease: "power3.out", stagger: 0.1 },
         0.45
       );
 
-      // Texto Base: Adicionado um levíssimo translateY para não entrar estático
       tl.fromTo(".hero-text",
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
         0.65
       );
 
-      // Botões: Trocamos o scale por um Y suave. Muito mais orgânico.
       tl.fromTo(".hero-btn",
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", stagger: 0.15 },
         0.75
       );
 
-      // --- EFEITO EDITORIAL DE SCROLL ---
       gsap.to(".hero-image", {
-        y: -50, // Reduzido de -60 para -50 para ficar ainda mais sutil
+        y: -50,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -75,7 +77,6 @@ export function Hero() {
           scrub: true,
         }
       });
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -90,7 +91,6 @@ export function Hero() {
         <img
           src={heroBarbell}
           alt="Treinador Junior Well"
-          /* Ajuste aplicado aqui: 82% no mobile para deslocar o atleta, md:68% para manter o foco no desktop */
           className="hero-image h-full w-full object-cover object-[54%_center] sm:object-[58%_center] md:object-[68%_center] scale-[1.04]"
         />
         <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
@@ -118,12 +118,18 @@ export function Hero() {
           </div>
 
           <div className="mt-10 -mx-3 px-3 py-3 flex flex-wrap items-center gap-4">
-            <a href="#consultoria" className="hero-btn btn-jw btn-jw-primary py-4 sm:py-[18px] tracking-[0.18em]">
+            <button 
+              onClick={() => handleNavClick("#consultoria")}
+              className="hero-btn btn-jw btn-jw-primary py-4 sm:py-[18px] tracking-[0.18em]"
+            >
               Agende sua Consultoria
-            </a>
-            <a href="#manifesto" className="hero-btn btn-jw btn-jw-ghost py-4 sm:py-[18px] tracking-[0.18em]">
+            </button>
+            <button 
+              onClick={() => handleNavClick("#manifesto")}
+              className="hero-btn btn-jw btn-jw-ghost py-4 sm:py-[18px] tracking-[0.18em]"
+            >
               Ver Diferenciais
-            </a>
+            </button>
           </div>
         </div>
 
