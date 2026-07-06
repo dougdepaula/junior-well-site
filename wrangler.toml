@@ -1,0 +1,3 @@
+name = "junior-well-site"
+main = "./dist/server/server.js"
+compatibility_date = "2026-07-06"
