@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { h as heroBarbell, N as Navbar, F as Footer } from "./router-B3wCud5l.js";
+import { h as heroBarbell, N as Navbar, F as Footer } from "./router-BnX7XK_X.js";
 import { FlaskConical, Triangle, Puzzle, HeartPulse, Stethoscope, Activity, Microscope, ClipboardList, Trophy, Check, ArrowUpRight, Plus } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
