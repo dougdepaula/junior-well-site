@@ -73,7 +73,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-BLdocbga.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-REyz91d5.js");
   const startManifest = tsrStartManifest();
   let routes = startManifest.routes;
   routes[rootRouteId];
@@ -1137,7 +1137,6 @@ var ServerFunctionSerializationAdapter = createSerializationAdapter({
     return fn;
   }
 });
-var define_process_env_default = {};
 function getStartResponseHeaders(opts) {
   return mergeHeaders({ "Content-Type": "text/html; charset=utf-8" }, ...opts.router.stores.matches.get().map((match) => {
     return match.headers;
@@ -1152,8 +1151,8 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-BnX7XK_X.js").then((n) => n.r),
-    import("./start-erZVN7MG.js"),
+    import("./router-B3wCud5l.js").then((n) => n.r),
+    import("./start-Ctkl8_Ts.js"),
     import("./empty-plugin-adapters-BFgPZ6_d.js")
   ]);
   return {
@@ -1193,8 +1192,8 @@ If you intentionally handle CSRF another way, disable this warning:
 }
 var ROUTER_BASEPATH = "/";
 var SERVER_FN_BASE = "/_serverFn/";
-var IS_PRERENDERING = define_process_env_default.TSS_PRERENDERING === "true";
-var IS_SHELL_ENV = define_process_env_default.TSS_SHELL === "true";
+var IS_PRERENDERING = process.env.TSS_PRERENDERING === "true";
+var IS_SHELL_ENV = process.env.TSS_SHELL === "true";
 var ERR_NO_RESPONSE = "Internal Server Error";
 var ERR_NO_DEFER = "Internal Server Error";
 function throwRouteHandlerError() {

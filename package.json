@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && del /f /q dist\\client\\client\\_redirects",
+    "build": "vite build && find dist -name '_redirects' -type f -delete",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
